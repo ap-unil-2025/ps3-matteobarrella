@@ -2,7 +2,7 @@
 Problem 4: File Word Counter
 Process text files and perform various analyses.
 """
-
+import string
 def create_sample_file(filename="sample.txt"):
     """
     Create a sample text file for testing.
@@ -15,7 +15,7 @@ It is widely used in web development, data science, and automation.
 Python's simple syntax makes it great for beginners.
 Many companies use Python for their projects."""
 
-    with open(filename, 'w') as f:
+    with open(filename, 'w', encoding="utf-8") as f:
         f.write(content)
     print(f"Created {filename}")
 
@@ -30,7 +30,7 @@ def count_words(filename):
     Returns:
         int: Total number of words
     """
-    with open(filename, 'r') as f:
+    with open(filename, 'r', encoding="utf-8") as f:
         text = f.read()
         words = text.split()
         return len(words)
@@ -46,7 +46,7 @@ def count_lines(filename):
     Returns:
         int: Total number of lines
     """
-    with open(filename, 'r') as f:
+    with open(filename, 'r', encoding="utf-8") as f:
         lines = f.readlines()
         return len(lines)
 
@@ -62,7 +62,7 @@ def count_characters(filename, include_spaces=True):
     Returns:
         int: Total number of characters
     """
-    with open(filename, 'r') as f:
+    with open(filename, 'r', encoding="utf8") as f:
         text = f.read()
         if not include_spaces:
             text = text.replace(" ", "").replace("\n", "")
@@ -79,12 +79,13 @@ def find_longest_word(filename):
     Returns:
         str: The longest word found
     """
-    import string
-    with open(filename, 'r') as f:
+
+
+    with open(filename, 'r', encoding="utf-8") as f:
         words = f.read().split()
         words = [w.strip(string.punctuation) for w in words]
-        longest = max(words, key=len)
-        return longest
+        longest_word = max(words, key=len)
+    return longest_word
 
 
 def word_frequency(filename):
@@ -98,16 +99,15 @@ def word_frequency(filename):
     Returns:
         dict: Dictionary with words as keys and frequencies as values
     """
-    import string
 
     frequency = {}
-    with open(filename, 'r') as f:
+    with open(filename, 'r', encoding="utf-8") as f:
         words = f.read().lower().split()
         words = [w.strip(string.punctuation) for w in words]
         for w in words:
             if w:
                 frequency[w] = frequency.get(w, 0) + 1
-  
+
     return frequency
 
 
@@ -140,7 +140,7 @@ def analyze_file(filename):
 
     except FileNotFoundError:
         print(f"Error: File '{filename}' not found!")
-    except Exception as e:
+    except ImportError as e:
         print(f"Error: {e}")
 
 
