@@ -48,7 +48,7 @@ def generate_password(length=12, use_uppercase=True, use_lowercase=True,
     if use_special:
         password.append(random.choice(string.punctuation))
 
-    while len(password) < length: 
+    while len(password) < length:
         password.append(random.choice(characters))
 
     random.shuffle(password)
