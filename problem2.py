@@ -42,23 +42,23 @@ def temperature_converter():
     print("Temperature Converter")
     print("-" * 30)
 
-try:
-    value = float(input("Enter the temperature value: "))
-    unit = input("Enter the unit (C/F): ").strip().upper()
+    try:
+        value = float(input("Enter the temperature value: "))
+        unit = input("Enter the unit (C/F): ").strip().upper()
 
-    if unit == "C":
-        result = celsius_to_fahrenheit (value)
-        print(f"{value:.2f}°C is {result:.2f}°F")
+        if unit == "C":
+            result = celsius_to_fahrenheit (value)
+            print(f"{value:.2f}°C is {result:.2f}°F")
 
-    elif unit == "F":
-        result = fahrenheit_to_celsius(value)
-        print(f"{value::2f}°F is {result:.2F}°C")
+        elif unit == "F":
+            result = fahrenheit_to_celsius(value)
+            print(f"{value::2f}°F is {result:.2F}°C")
 
-    else:
-        print("Invalid unit! Please enter F or C.")
+        else:
+            print("Invalid unit! Please enter F or C.")
 
-except ValueError:
-    print("Invalid input: Please enter a number for the temperature.")
+    except ValueError:
+        print("Invalid input: Please enter a number for the temperature.")
 
 
 
