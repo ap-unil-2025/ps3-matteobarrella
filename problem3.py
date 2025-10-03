@@ -15,9 +15,9 @@ def get_numbers_from_user():
 
     while True:
         user_input = input("Enter a number (or 'done' to finish): ")
-        if user_input.lower() == "done": 
+        if user_input.lower() == "done":
             break
-        try: 
+        try:
             number = float(user_input)
             numbers.append(number)
         except ValueError:
